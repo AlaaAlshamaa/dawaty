@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./golden-theme.css";
-import { Tajawal, El_Messiri } from "next/font/google";
+import { Cairo, Tajawal, El_Messiri } from "next/font/google";
+
+const cairo = Cairo({
+  subsets: ["arabic"],
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-cairo",
+});
 
 const tajawal = Tajawal({
   subsets: ["arabic"],
@@ -27,7 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
  return (
-    <html lang="ar" dir="rtl" className={`${tajawal.variable} ${almessiri.variable}`}>
+<html
+  lang="ar"
+  dir="rtl"
+  className={`${tajawal.variable} ${almessiri.variable} ${cairo.variable}`}
+>      
       <body>{children}</body>
     </html>
   );
