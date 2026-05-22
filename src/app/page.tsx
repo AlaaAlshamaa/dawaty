@@ -8,26 +8,26 @@ export default function HomePage() {
   },
  {
     title: " مولد نبوي   ",
-    subtitle: "دعوة لسماع مولد خير الورى هي أجمل الدعوات ",
-    href: "",
+    subtitle: "قريبًا" , /* "دعوة لسماع مولد خير الورى هي أجمل الدعوات " */
+    href: "#",
     image: "/templates/golden/images/mawled.jpg",
   },
   {
     title: "حفل تخرج",
-    subtitle: "لحظة نجاحك تستحق احتفالاً مميزاً",
-    href: "",
+    subtitle: "قريبًا", /* "لحظة نجاحك تستحق احتفالاً مميزاً", */
+    href: "#",
     image: "/templates/golden/images/graduation.jpg",
   },
   {
     title: "استقبال مولود",
-    subtitle: "فرحة صغيرة تستحق دعوة مليئة بالحبِ والدفء",
-    href: "",
+    subtitle: "قريبًا", /*"فرحة صغيرة تستحق دعوة مليئة بالحبِ والدفء", */
+    href: "#",
     image: "/templates/golden/images/baby.jpg",
   },
   {
     title: "مناسبة خاصة",
-    subtitle: "مناسبتكِ احتفالكِ ودعوتكِ .. بطابعكٍ الخاص",
-    href: "",
+    subtitle: "قريبًا", /*"مناسبتكِ احتفالكِ ودعوتكِ .. بطابعكٍ الخاص", */
+    href: "#",
     image: "/templates/golden/images/party.jpg",
   },
  
@@ -154,6 +154,10 @@ export default function HomePage() {
       <a href="#features">المميزات</a>
       <a href="#about">عن Dawaty</a>
     </nav>
+
+    <a href="https://www.instagram.com/dawaty.invites?igsh=NWpncTVzMGszMDFr" target="_blank" rel="noreferrer">
+        إنستغرام
+      </a>
 
     <p className="home-footer-copy">
       © 2026 Dawaty. All rights reserved.

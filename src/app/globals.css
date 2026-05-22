@@ -484,6 +484,11 @@ body { font-family: var(--font-body); }
   color: inherit;
 }
 
+.demo-card.is-disabled {
+  opacity: 0.72;
+}
+
+
 .demo-card:hover {
   transform: translateY(-6px);
 }
@@ -517,6 +522,8 @@ body { font-family: var(--font-body); }
   margin-top: 10px;
   display: inline-block;
 }
+
+
 
 /* FEATURES (Modern style) */
 .soft-feature-list {
@@ -618,4 +625,45 @@ body { font-family: var(--font-body); }
 .home-footer-copy {
   font-size: 13px;
   color:var(--text-muted);;
+}
+
+.mawled-theme {
+  --bg: #f7f4ea;
+  --card: #fffdf7;
+
+  --primary: #315c45;
+  --secondary: #6f8f72;
+
+  --accent: #c6a85b;
+
+  --text: #1f2a24;
+  --muted: #6f756f;
+
+  --border: rgba(198, 168, 91, 0.28);
+}
+
+.mawled-theme .hero-no-image {
+  background:
+    radial-gradient(circle at top, rgba(198, 168, 91, 0.18), transparent 38%),
+    linear-gradient(180deg, #f7f4ea 0%, #fffdf7 100%);
+}
+
+.mawled-title {
+  background: linear-gradient(90deg, #315c45, #c6a85b, #315c45);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mawled-theme .btn-primary {
+  background: #315c45;
+  color: #fff;
+  border: 1px solid rgba(198, 168, 91, 0.35);
+}
+
+.mawled-theme .section-title,
+.mawled-theme .contact-title,
+.mawled-theme .featured-title {
+  color: #315c45;
+  background: none;
 }

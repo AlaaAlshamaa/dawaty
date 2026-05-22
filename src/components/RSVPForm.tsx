@@ -110,7 +110,7 @@ const DEFAULT_THEME: Theme = {
           </label>
         </div>
 
-        {status === "yes" && (
+        { (
            <div style={{ display: "grid", gap: 8 }}>
     <h4>
       عدد الأشخاص:

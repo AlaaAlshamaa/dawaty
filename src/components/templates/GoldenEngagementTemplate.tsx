@@ -243,10 +243,11 @@ export default function MaisonEngagementTemplate({
     </nav>
 
     <div className="footer-social">
+          {/* RSVP 
       <a href="https://wa.me/963XXXXXXXXX" target="_blank" rel="noreferrer">
         واتساب
-      </a>
-      <a href="https://instagram.com/yourpage" target="_blank" rel="noreferrer">
+      </a>*/}
+      <a href="https://www.instagram.com/dawaty.invites?igsh=NWpncTVzMGszMDFr" target="_blank" rel="noreferrer">
         إنستغرام
       </a>
     </div>
