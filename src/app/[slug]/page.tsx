@@ -7,7 +7,35 @@ import TemplateRenderer from "@/components/templates/TemplateRenderer";
 
 import type { Invite } from "@/types";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { data: invite } = await supabase
+    .from("invites")
+    .select("*")
+    .eq("slug", params.slug)
+    .single();
 
+  if (!invite) {
+    return {
+      title: "Dawaty",
+    };
+  }
+
+  return {
+    title: invite.title,
+    description:
+      invite.subtitle || "نتشرف بدعوتكم لحضور مناسبتنا",
+    openGraph: {
+      title: invite.title,
+      description:
+        invite.subtitle || "نتشرف بدعوتكم لحضور مناسبتنا",
+      images: [invite.cover_image_url],
+    },
+  };
+}
 export default function InvitePage() {
   const params = useParams<{ slug: string }>();
   const slug = params.slug;
@@ -22,6 +50,7 @@ const [status, setStatus] = useState<"yes" | "no">("yes");
 const [guestsCount, setGuestsCount] = useState(1);
 const [message, setMessage] = useState("");
 const [sentMsg, setSentMsg] = useState<string | null>(null);
+
 
 useEffect(() => {
     if (status === "no") {
@@ -97,3 +126,4 @@ useEffect(() => {
     return <TemplateRenderer invite={invite} />;
 
 }
+
