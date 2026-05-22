@@ -62,11 +62,7 @@ export default function MaisonEngagementTemplate({
       نكتب معًا أول سطور العمر… وننتظر حضوركم ليكتمل فرحنا
     </p>
 
-          <div className="hero-actions">
-            <a href="#rsvp" className="btn-primary">
-              تأكيد الحضور
-            </a>
-          </div>
+          
         </div>
       </section>
 
