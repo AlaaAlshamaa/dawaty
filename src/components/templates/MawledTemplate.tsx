@@ -46,8 +46,6 @@ const gallery = [
 
   return (
  
-
-
     <div dir="rtl">
         {/* HERO */}
 <section className="hero hero-no-image" id="home">

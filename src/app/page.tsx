@@ -8,7 +8,7 @@ export default function HomePage() {
   },
  {
     title: " مولد نبوي   ",
-    subtitle: "قريبًا" , /* "دعوة لسماع مولد خير الورى هي أجمل الدعوات " */
+    subtitle: "دعوة لسماع مولد خير الورى هي أجمل الدعوات " ,
     href: "/mawled25082026",
     image: "/templates/golden/images/mawled.jpg",
   },
