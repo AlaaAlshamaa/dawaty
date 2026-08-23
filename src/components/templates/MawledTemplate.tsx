@@ -45,14 +45,7 @@ const gallery = [
   const [openRSVP, setOpenRSVP] = useState(false);
 
   return (
-  <div
-    dir="rtl"
-    style={{
-      background: "#f6f2e8",
-      color: "#344238",
-      minHeight: "100vh",
-    }}
-  >
+ 
 
 
     <div dir="rtl">
@@ -60,7 +53,7 @@ const gallery = [
 <section className="hero hero-no-image" id="home">
           <div className="hero-content hero-fade-in">
           <p className="text-label hero-tagline">
-            يسرّنا دعوتكم لحضور {invite.title || "حفل خطوبة"}
+            يسرّنا دعوتكم لحضور 
           </p>
 
           <h1 className="heading-display hero-title golden-title ">
@@ -70,6 +63,7 @@ const gallery = [
            <p className="text-body hero-description">
 في أجواء من المحبة، نتشرف بحضوركم لمشاركتنا هذه المناسبة المباركة    </p>
 
+          
         </div>
       </section>
 
@@ -259,7 +253,6 @@ const gallery = [
 </footer>
 </section>
 
-    </div>
     </div>
   );
 }
