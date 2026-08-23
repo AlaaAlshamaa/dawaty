@@ -35,18 +35,26 @@ export default function MaisonEngagementTemplate({
     invite.cover_image_url ||
     "/templates/maison/images/maison-hero-01.jpg";
 
-  const gallery =
-    invite.gallery_image_urls?.length
-      ? invite.gallery_image_urls
-      : [
-          "/templates/maison/images/maison-doree-01.jpg",
-          "/templates/maison/images/maison-doree-02.jpg",
-          "/templates/maison/images/maison-doree-03.jpg",
-        ];
+const gallery = [
+  "/templates/mawled/images/1.jpg",
+  "/templates/mawled/images/2.jpg",
+  "/templates/mawled/images/3.jpg",
+  "/templates/mawled/images/4.jpg",
+];
 
   const [openRSVP, setOpenRSVP] = useState(false);
 
   return (
+  <div
+    dir="rtl"
+    style={{
+      background: "#f6f2e8",
+      color: "#344238",
+      minHeight: "100vh",
+    }}
+  >
+
+
     <div dir="rtl">
         {/* HERO */}
 <section className="hero hero-no-image" id="home">
@@ -62,19 +70,13 @@ export default function MaisonEngagementTemplate({
            <p className="text-body hero-description">
 في أجواء من المحبة، نتشرف بحضوركم لمشاركتنا هذه المناسبة المباركة    </p>
 
-          <div className="hero-actions">
-            <a href="#rsvp" className="btn-primary">
-              تأكيد الحضور
-            </a>
-          </div>
         </div>
       </section>
 
 <section className="collections" id="gallery">
   <div className="container">
     <h2 className="heading-display section-title golden-title">
-      دعوة زفاف
-    </h2>
+كل عام وأنتم بخير    </h2>
 
     {/* أول 4 صور (التصميم الفني) */}
     {gallery.length >= 4 && (
@@ -217,8 +219,7 @@ export default function MaisonEngagementTemplate({
             ×
           </button>
 
-          <RSVPForm inviteId={invite.id} />
-        </div>
+<RSVPForm inviteId={invite.id} showGuestsCount={false} />        </div>
       </div>
     )}
   </div>
@@ -258,6 +259,7 @@ export default function MaisonEngagementTemplate({
 </footer>
 </section>
 
+    </div>
     </div>
   );
 }

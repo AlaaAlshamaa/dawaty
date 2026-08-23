@@ -14,13 +14,15 @@ const DEFAULT_THEME: Theme = {
   };
   
 
-  export default function RSVPForm({
-    inviteId,
-    theme,
-  }: {
-    inviteId: string;
-    theme?: Theme;
-  })  {
+export default function RSVPForm({
+  inviteId,
+  theme,
+  showGuestsCount = true,
+}: {
+  inviteId: string;
+  theme?: Theme;
+  showGuestsCount?: boolean;
+})   {
   const [guestName, setGuestName] = useState("");
   const [status, setStatus] = useState<"yes" | "no">("yes");
   const [guestsCount, setGuestsCount] = useState(1);
@@ -38,14 +40,13 @@ const DEFAULT_THEME: Theme = {
       setSentMsg("الرجاء إدخال الاسم");
       return;
     }
-
-    const { error } = await supabase.from("rsvps").insert({
-      invite_id: inviteId,
-      guest_name: guestName.trim(),
-      status,
-      guests_count: guestsCount,
-      message: message.trim() || null,
-    });
+const { error } = await supabase.from("rsvps").insert({
+  invite_id: inviteId,
+  guest_name: guestName.trim(),
+  status,
+  guests_count: showGuestsCount ? guestsCount : 1,
+  message: message.trim() || null,
+});
 
     if (error) {
       setSentMsg("حدث خطأ أثناء الإرسال");
@@ -110,11 +111,9 @@ const DEFAULT_THEME: Theme = {
           </label>
         </div>
 
-        { (
-           <div style={{ display: "grid", gap: 8 }}>
-    <h4>
-      عدد الأشخاص:
-    </h4>
+   {showGuestsCount && status === "yes" && (
+  <div style={{ display: "grid", gap: 8 }}>
+    <h4>عدد الأشخاص:</h4>
 
     <input
       type="number"
@@ -123,10 +122,10 @@ const DEFAULT_THEME: Theme = {
       value={guestsCount}
       onChange={(e) => setGuestsCount(Number(e.target.value))}
       style={inputStyle}
-      
     />
   </div>
-        )}
+)}
+       
 
         <textarea
           placeholder="ملاحظة (اختياري)"
