@@ -21,11 +21,30 @@ const almessiri = El_Messiri({
   variable: "--font-heading",
 });
 
-
 export const metadata = {
+  metadataBase: new URL("https://dawaty.vercel.app"),
+
   title: "Dawaty — لحظتك تبدأ بدعوة",
-  description: "منصة لإنشاء دعوات رقمية فاخرة للمناسبات",
+  description: "دعوات رقمية أنيقة لمناسباتكم الخاصة",
+
+  openGraph: {
+    title: "Dawaty — لحظتك تبدأ بدعوة",
+    description: "دعوات رقمية أنيقة لمناسباتكم الخاصة",
+    url: "https://dawaty.vercel.app",
+    siteName: "Dawaty",
+    locale: "ar_SY",
+    type: "website",
+    images: [
+      {
+        url: "/images/sharhome.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Dawaty",
+      },
+    ],
+  },
 };
+
 
 export default function RootLayout({
   children,

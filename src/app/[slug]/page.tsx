@@ -1,101 +1,70 @@
-"use client";
-
-import { useEffect, useMemo, useState } from "react";
-import { useParams } from "next/navigation";
+import type { Metadata } from "next";
+import InviteClient from "./InviteClient";
 import { supabase } from "@/lib/supabaseClient";
-import TemplateRenderer from "@/components/templates/TemplateRenderer";
 
-import type { Invite } from "@/types";
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { slug } = await params;
 
-export default function InvitePage() {
-  const params = useParams<{ slug: string }>();
-  const slug = params.slug;
+  const { data: invite } = await supabase
+    .from("invites")
+    .select("title, host_names, cover_image_url")
+    .eq("slug", slug)
+    .maybeSingle();
 
-  const [invite, setInvite] = useState<Invite | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState<string | null>(null);
+  if (!invite) {
+    return {
+      title: "دعوة خاصة | Dawaty",
+    };
+  }
 
-  
-  const [guestName, setGuestName] = useState("");
-const [status, setStatus] = useState<"yes" | "no">("yes");
-const [guestsCount, setGuestsCount] = useState(1);
-const [message, setMessage] = useState("");
-const [sentMsg, setSentMsg] = useState<string | null>(null);
+  const names = invite.host_names || invite.title;
 
+  const title = `${invite.title} — ${names}`;
 
-useEffect(() => {
-    if (status === "no") {
-      setGuestsCount(1);
-    }
-  }, [status]);
-  
+  const description =
+    `بكل الحب والسرور، نتشرف بدعوتكم لمشاركتنا هذه المناسبة السعيدة.`;
 
-  useEffect(() => {
-    if (!slug) return;
+  const image =
+    invite.cover_image_url ||
+    "/images/share.png";
 
-    (async () => {
-      setLoading(true);
-      setErr(null);
+  const url = `https://dawaty.vercel.app/${encodeURIComponent(slug)}`;
 
-      const { data, error } = await supabase
-        .from("invites")
-        .select("*")
-        .eq("slug", slug)
-        .single();
+  return {
+    title,
+    description,
 
-      if (error) {
-        setErr(error.message);
-        setInvite(null);
-      } else {
-        setInvite(data as Invite);
-      }
-
-      setLoading(false);
-    })();
-  }, [slug]);
-
-  const eventDate = useMemo(() => {
-    if (!invite) return "";
-    return new Date(invite.event_at).toLocaleString("ar", {
-      dateStyle: "full",
-      timeStyle: "short",
-    });
-  }, [invite]);
-
-  if (loading) return <div style={{ padding: 24 }}>Loading…</div>;
-  if (err) return <div style={{ padding: 24 }}>Error: {err}</div>;
-  if (!invite) return <div style={{ padding: 24 }}>الدعوة غير موجودة</div>;
-
-  async function submitRSVP() {
-    if (!invite) return;
-  
-    if (!guestName.trim()) {
-      setSentMsg("الرجاء إدخال الاسم");
-      return;
-    }
-  
-    const { error } = await supabase.from("rsvps").insert({
-      invite_id: invite.id,
-      guest_name: guestName.trim(),
-      status,
-      guests_count: guestsCount,
-      message: message.trim() || null,
-    });
-  
-    if (error) {
-      setSentMsg("حدث خطأ أثناء الإرسال");
-      return;
-    }
-  
-    setSentMsg("تم تسجيل ردّك بنجاح ✅");
-    setGuestName("");
-    setGuestsCount(1);
-    setMessage("");
-    setStatus("yes");
-  }  
-
-    return <TemplateRenderer invite={invite} />;
-
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "Dawaty",
+      locale: "ar_SY",
+      type: "website",
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+  card: "summary_large_image",
+  title: "Dawaty — لحظتك تبدأ بدعوة",
+  description: "دعوات رقمية أنيقة لمناسباتكم الخاصة",
+  images: ["/images/share.png"],
+},
+  };
 }
 
+export default function Page() {
+  return <InviteClient />;
+}
