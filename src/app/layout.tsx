@@ -36,7 +36,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/images/sharhome.jpg",
+        url: "/images/share.png",
         width: 1200,
         height: 630,
         alt: "Dawaty",
