@@ -29,11 +29,12 @@ export const metadata = {
 
   openGraph: {
     title: "Dawaty — لحظتك تبدأ بدعوة",
-    description: "دعوات رقمية أنيقة لمناسباتكم الخاصة",
+    description: "لحظاتكم الجميلة تستحق دعوة تليق بها",
     url: "https://dawaty.vercel.app",
     siteName: "Dawaty",
     locale: "ar_SY",
     type: "website",
+
     images: [
       {
         url: "/images/share.png",
@@ -42,6 +43,13 @@ export const metadata = {
         alt: "Dawaty",
       },
     ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Dawaty — لحظتك تبدأ بدعوة",
+    description: "دعوات رقمية أنيقة لمناسباتكم الخاصة",
+    images: ["/images/share.png"],
   },
 };
 
