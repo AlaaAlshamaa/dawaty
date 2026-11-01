@@ -37,7 +37,7 @@ export const metadata = {
 
     images: [
       {
-        url: "/images/share.png",
+        url: "/images/share2.png",
         width: 1200,
         height: 630,
         alt: "Dawaty",
@@ -49,7 +49,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Dawaty — لحظتك تبدأ بدعوة",
     description: "دعوات رقمية أنيقة لمناسباتكم الخاصة",
-    images: ["/images/share.png"],
+    images: ["/images/share2.png"],
   },
 };
 

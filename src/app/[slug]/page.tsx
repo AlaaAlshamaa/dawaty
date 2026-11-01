@@ -32,7 +32,7 @@ export async function generateMetadata({
 
   const image =
     invite.cover_image_url ||
-    "/images/share.png";
+    "/images/share2.png";
 
   const url = `https://dawaty.vercel.app/${encodeURIComponent(slug)}`;
 
@@ -60,7 +60,7 @@ export async function generateMetadata({
   card: "summary_large_image",
   title: "Dawaty — لحظتك تبدأ بدعوة",
   description: "دعوات رقمية أنيقة لمناسباتكم الخاصة",
-  images: ["/images/share.png"],
+  images: ["/images/share2.png"],
 },
   };
 }
